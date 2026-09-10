@@ -6,6 +6,6 @@
     <title>prueba</title>
 </head>
 <body>
-    HOLA DESDE PHP - HTML
+    
 </body>
 </html>
