@@ -1,0 +1,298 @@
+/* ==========================================
+   🎨 VARIABLES PRINCIPALES (:root)
+   ========================================== */
+:root {
+    --color-fondo: #f0f4f8;          /* Fondo gris azulado suave */
+    --color-menu: #003366;           /* Azul oscuro para header/menu */
+    --color-letra: #222222;          /* Texto principal (negro suave) */
+    --color-acento: #FFD700;         /* Amarillo dorado para detalles */
+    --color-banner: rgba(0, 51, 102, 0.7); /* Azul con transparencia */
+    --color-footer: #1a1a1a;         /* Negro para pie de página */
+    --color-boton-hover: rgba(0, 51, 102, 0.8); /* Azul translúcido */
+    --color-letra-footer: #cccccc;   /* Gris claro */
+}
+
+/* ==========================================
+   ⚙️ RESET BÁSICO Y CONFIGURACIÓN GENERAL
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-letra);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   💻 ENCABEZADO (HEADER) y MENÚ
+   ========================================== */
+#encabezado {
+    background-color: var(--color-menu);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+#encabezado .logo img {
+    height: 60px;
+    display: block;
+}
+
+.menu-principal ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu-principal a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.menu-principal a:hover {
+    color: var(--color-acento);
+}
+
+/* ==========================================
+   📢 BANNER DE SERVICIOS
+   ========================================== */
+.banner {
+    background-color: var(--color-banner);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.banner:hover {
+    transform: scale(1.05);
+    background-color: var(--color-menu);
+}
+
+/* ==========================================
+   👥 SECCIÓN SOBRE NOSOTROS
+   ========================================== */
+#nosotros {
+    padding: 40px;
+    background: linear-gradient(to right, #e0e0e0, #f9f9f9);
+    text-align: center;
+}
+
+#nosotros h2 {
+    color: var(--color-menu);
+    margin-bottom: 15px;
+}
+
+/* ==========================================
+   🛠️ SECCIÓN DE SERVICIOS ALTERNADOS
+   ========================================== */
+.seccion-servicio {
+    display: flex;
+    flex-direction: column; /* Diseño móvil por defecto */
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.servicio-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.85); /* Fondo difuminado legible */
+}
+
+.servicio-info h2 {
+    color: var(--color-menu);
+    margin-bottom: 15px;
+}
+
+.servicio-info p {
+    margin-bottom: 20px;
+}
+
+/* Botón interactivo */
+.boton-servicio {
+    display: inline-block;
+    align-self: flex-start; /* Evita que el botón ocupe todo el ancho */
+    padding: 12px 20px;
+    border: 2px solid var(--color-menu);
+    color: var(--color-menu);
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.boton-servicio::after {
+    content: " ➜";
+}
+
+.boton-servicio:hover {
+    background-color: var(--color-boton-hover);
+    color: white;
+}
+
+/* ==========================================
+   👣 PIE DE PÁGINA (FOOTER)
+   ========================================== */
+#pie-de-pagina {
+    background-color: var(--color-footer);
+    color: var(--color-letra-footer);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+#pie-de-pagina h3 {
+    color: var(--color-acento);
+    margin-bottom: 10px;
+}
+
+#pie-de-pagina a {
+    color: var(--color-letra-footer);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#pie-de-pagina a:hover {
+    color: var(--color-acento);
+}
+
+.derechos {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+/* ==========================================
+   📱 DISEÑO BASE: SÓLO PARA ZOOM EXTREMO (250%-300%+) O CELULARES MUY PEQUEÑOS
+   ========================================== */
+
+/* Menú de navegación apilado para cuando ya no hay espacio */
+#encabezado {
+    flex-direction: column; 
+    gap: 15px;
+    text-align: center;
+    padding: 20px 15px;
+}
+
+.menu-principal ul {
+    flex-direction: column; 
+    gap: 12px;
+    align-items: center;
+}
+
+/* Servicios unidos en una sola columna con fondo unificado */
+.seccion-servicio {
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh; 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.servicio-info {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9); /* El texto flota sobre la imagen de fondo */
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.boton-servicio {
+    align-self: center; 
+}
+/*IMAGEES DE FONDO*/
+#peluqueria {
+    background-image: url('../img/baberia.webp');
+    background-size: cover;
+    background-position: right;
+}
+/* ==========================================
+   💻 DISEÑO PARA PANTALLAS NORMALES, LAPTOPS Y ZOOM MODERADO (Hasta 200%-249%)
+   ========================================== */
+
+@media (min-width: 576px) {
+    
+    /* Restaurar menú horizontal rápido desde pantallas pequeñas */
+    #encabezado {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 30px;
+    }
+
+    .menu-principal ul {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    /* Mantener el diseño de dos columnas (60% imagen, 40% texto) lo más posible */
+    .seccion-servicio {
+        flex-direction: row;
+        min-height: 80vh; /* Ajuste de altura para pantallas medianas con zoom */
+    }
+
+    /* Información a la izquierda */
+    .seccion-servicio.izquierda .servicio-info {
+        order: 1;
+        flex: 0 0 45%; /* Ajustamos a 45% para dar más espacio al texto durante el zoom */
+        background: rgb(255, 255, 255); 
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .seccion-servicio.izquierda::before {
+        content: "";
+        flex: 0 0 55%;
+        order: 2;
+        background-image: inherit;
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Información a la derecha */
+    .seccion-servicio.derecha .servicio-info {
+        order: 2;
+        flex: 0 0 45%;
+        background: rgb(255, 255, 255);
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .seccion-servicio.derecha::before {
+        content: "";
+        flex: 0 0 55%;
+        order: 1;
+        background-image: inherit;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    /* Ocultar el fondo duplicado del contenedor cuando esté en modo dos columnas */
+    .seccion-servicio.izquierda,
+    .seccion-servicio.derecha {
+        background-image: none !important;
+    }
+
+    .boton-servicio {
+        align-self: flex-start;
+    }
+}
