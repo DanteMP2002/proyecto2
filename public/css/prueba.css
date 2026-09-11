@@ -1,0 +1,114 @@
+/* Variables de marca */
+:root {
+    --color-fondo-crema: #FDFCF0;
+    --color-texto-oscuro: #333;
+    --color-dorado-acento: #C5A059; /* Un tono dorado aproximado */
+    --transicion: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', sans-serif; /* O tu fuente corporativa */
+    background-color: var(--color-fondo-crema);
+    color: var(--color-texto-oscuro);
+}
+
+.servicios-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Diseño adaptable */
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.servicio-tarjeta {
+    position: relative;
+    height: 400px; /* Altura fija para las tarjetas */
+    border-radius: 12px;
+    overflow: none; /* Para que la imagen no se salga */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: var(--transicion);
+    background-color: var(--color-fondo-crema); /* Fondo de color base */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain; /* Ajusta la imagen sin recortarla demasiado */
+}
+
+.servicio-tarjeta:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+
+/* Aplicar cada imagen de fondo individualmente */
+#tarjeta-peluqueria {
+    background-image: url('../img/baberia.webp'); /* Reemplaza con tu ruta real */
+}
+
+#tarjeta-barberia {
+    background-image: url('image_15.png'); /* Reemplaza con tu ruta real */
+    background-size: cover; /* Barbería funciona mejor con cover */
+}
+
+#tarjeta-manicura {
+    background-image: url('image_16.png'); /* Reemplaza con tu ruta real */
+}
+
+#tarjeta-otros {
+    background-image: url('image_17.png'); /* Reemplaza con tu ruta real */
+    background-size: 60%; /* Un poco más pequeño para que respire */
+}
+
+/* Contenido de texto superpuesto */
+.contenido-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(253,252,240,0.9), transparent); /* Gradiente para legibilidad */
+    text-align: center;
+    transition: var(--transicion);
+}
+
+.servicio-tarjeta:hover .contenido-overlay {
+    transform: translateY(-10px); /* El texto sube al hacer hover */
+}
+
+.servicio-tarjeta h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.8rem;
+    color: var(--color-texto-oscuro);
+}
+
+.servicio-tarjeta p {
+    margin: 0 0 1.5rem 0;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.btn-servicios {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--color-dorado-acento);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: var(--transicion);
+    opacity: 0; /* Oculto por defecto */
+}
+
+.servicio-tarjeta:hover .btn-servicios {
+    opacity: 1; /* Aparece al hacer hover */
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+    .servicio-tarjeta {
+        height: 350px;
+    }
+    .btn-servicios {
+        opacity: 1; /* Siempre visible en móvil */
+    }
+}
