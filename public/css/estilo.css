@@ -1,298 +1,561 @@
 /* ==========================================
-   🎨 VARIABLES PRINCIPALES (:root)
+   🎨 VARIABLES — Paleta premium para salón de estética
+   Negro profundo + blanco roto + dorado cálido + rosa arena
    ========================================== */
 :root {
-    --color-fondo: #f0f4f8;          /* Fondo gris azulado suave */
-    --color-menu: #003366;           /* Azul oscuro para header/menu */
-    --color-letra: #222222;          /* Texto principal (negro suave) */
-    --color-acento: #FFD700;         /* Amarillo dorado para detalles */
-    --color-banner: rgba(0, 51, 102, 0.7); /* Azul con transparencia */
-    --color-footer: #1a1a1a;         /* Negro para pie de página */
-    --color-boton-hover: rgba(0, 51, 102, 0.8); /* Azul translúcido */
-    --color-letra-footer: #cccccc;   /* Gris claro */
+    --negro:       #0D0D0D;   /* Fondo oscuro principal */
+    --blanco-roto: #F8F5F0;   /* Blanco cálido, no frío */
+    --dorado:      #C9A84C;   /* Acento dorado — único color de énfasis */
+    --rosa-arena:  #E8D5C4;   /* Tono piel suave para secciones claras */
+    --gris-texto:  #9A9A9A;   /* Texto secundario sobre fondos oscuros */
+    --overlay:     rgba(10, 8, 6, 0.62); /* Capa oscura sobre fotos de servicios */
+    --fuente-titulo: 'Playfair Display', Georgia, serif;
+    --fuente-cuerpo: 'Inter', Arial, sans-serif;
 }
 
 /* ==========================================
-   ⚙️ RESET BÁSICO Y CONFIGURACIÓN GENERAL
+   ⚙️ RESET Y BASE
    ========================================== */
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en el menú */
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--color-fondo);
-    color: var(--color-letra);
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--negro);
+    color: var(--blanco-roto);
     line-height: 1.6;
 }
 
 /* ==========================================
-   💻 ENCABEZADO (HEADER) y MENÚ
+   💻 HEADER — Barra de navegación fija y transparente
    ========================================== */
 #encabezado {
-    background-color: var(--color-menu);
-    color: white;
+    position: fixed;        /* Queda fija al hacer scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 18px 40px;
+    /* Fondo negro con leve transparencia; se ve elegante sobre el hero */
+    background-color: rgba(13, 13, 13, 0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.25); /* Línea dorada sutil */
 }
 
+/* Logo: altura fija para no deformar */
 #encabezado .logo img {
-    height: 60px;
+    height: 52px;
     display: block;
 }
 
+/* Lista del menú en fila */
 .menu-principal ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 32px;
 }
 
+/* Links del menú */
 .menu-principal a {
-    color: white;
+    color: var(--blanco-roto);
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
 }
 
 .menu-principal a:hover {
-    color: var(--color-acento);
+    color: var(--dorado); /* Al pasar el cursor cambia a dorado */
 }
 
 /* ==========================================
-   📢 BANNER DE SERVICIOS
+   🖼️ HERO — Sección de bienvenida a pantalla completa
    ========================================== */
-.banner {
-    background-color: var(--color-banner);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.banner:hover {
-    transform: scale(1.05);
-    background-color: var(--color-menu);
-}
-
-/* ==========================================
-   👥 SECCIÓN SOBRE NOSOTROS
-   ========================================== */
-#nosotros {
-    padding: 40px;
-    background: linear-gradient(to right, #e0e0e0, #f9f9f9);
-    text-align: center;
-}
-
-#nosotros h2 {
-    color: var(--color-menu);
-    margin-bottom: 15px;
-}
-
-/* ==========================================
-   🛠️ SECCIÓN DE SERVICIOS ALTERNADOS
-   ========================================== */
-.seccion-servicio {
+#inicio.hero {
+    min-height: 100vh;      /* Ocupa toda la pantalla */
     display: flex;
-    flex-direction: column; /* Diseño móvil por defecto */
-    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Fallback oscuro mientras carga la imagen */
+    background-color: var(--negro);
+    background-image:
+        linear-gradient(rgba(10, 8, 6, 0.55), rgba(10, 8, 6, 0.55)),
+        url('/public/img/unity.webp'); /* Imagen de fondo del hero */
     background-size: cover;
     background-position: center;
+    padding: 0 20px;
 }
 
-.servicio-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.85); /* Fondo difuminado legible */
+.hero-contenido {
+    max-width: 700px;
 }
 
-.servicio-info h2 {
-    color: var(--color-menu);
-    margin-bottom: 15px;
-}
-
-.servicio-info p {
+/* Etiqueta pequeña sobre el título */
+.hero-etiqueta {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dorado);
     margin-bottom: 20px;
 }
 
-/* Botón interactivo */
-.boton-servicio {
+/* Título principal — el elemento más grande y memorable */
+.hero-contenido h1 {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(3.5rem, 9vw, 7rem); /* Tamaño fluido según pantalla */
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--blanco-roto);
+    margin-bottom: 24px;
+}
+
+/* La palabra en cursiva da personalidad sin recargar */
+.hero-contenido h1 em {
+    font-style: italic;
+    color: var(--dorado);
+}
+
+/* Descripción breve bajo el título */
+.hero-descripcion {
+    font-size: 1rem;
+    color: var(--gris-texto);
+    max-width: 420px;
+    margin: 0 auto 36px;
+}
+
+/* Botón principal del hero */
+.btn-hero {
     display: inline-block;
-    align-self: flex-start; /* Evita que el botón ocupe todo el ancho */
-    padding: 12px 20px;
-    border: 2px solid var(--color-menu);
-    color: var(--color-menu);
-    font-weight: bold;
+    padding: 14px 36px;
+    border: 1.5px solid var(--dorado);
+    color: var(--dorado);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     text-decoration: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.boton-servicio::after {
-    content: " ➜";
-}
-
-.boton-servicio:hover {
-    background-color: var(--color-boton-hover);
-    color: white;
+.btn-hero:hover {
+    background-color: var(--dorado);
+    color: var(--negro); /* Inversión dorado/negro al pasar el cursor */
 }
 
 /* ==========================================
-   👣 PIE DE PÁGINA (FOOTER)
+   🛠️ SERVICIOS — Grid de 4 tarjetas con foto de fondo
    ========================================== */
-#pie-de-pagina {
-    background-color: var(--color-footer);
-    color: var(--color-letra-footer);
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 30px;
+#servicios {
+    /* Grid de 2 columnas en escritorio */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-#pie-de-pagina h3 {
-    color: var(--color-acento);
+/* Cada tarjeta ocupa media pantalla de alto */
+.servicio-card {
+    position: relative;
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
+    /* Si no hay imagen asignada, fondo oscuro de respaldo */
+    background-color: #1a1a1a;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Overlay oscuro sobre la foto para hacer legible el texto */
+.servicio-overlay {
+    position: absolute;
+    inset: 0; /* Cubre toda la tarjeta */
+    background: var(--overlay);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Texto anclado abajo */
+    padding: 36px 40px;
+    transition: background 0.35s ease;
+}
+
+/* Al pasar el cursor, el overlay se aclara ligeramente */
+.servicio-card:hover .servicio-overlay {
+    background: rgba(10, 8, 6, 0.45);
+}
+
+/* Número de servicio en estilo grande y sutil */
+.servicio-numero {
+    font-family: var(--fuente-titulo);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--dorado);
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Título de cada servicio */
+.servicio-overlay h2 {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--blanco-roto);
     margin-bottom: 10px;
 }
 
-#pie-de-pagina a {
-    color: var(--color-letra-footer);
+/* Descripción corta del servicio */
+.servicio-overlay p {
+    font-size: 0.88rem;
+    color: rgba(248, 245, 240, 0.78);
+    max-width: 320px;
+    margin-bottom: 20px;
+}
+
+/* Botón de cada tarjeta de servicio */
+.btn-servicio {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 1px solid rgba(201, 168, 76, 0.6);
+    color: var(--dorado);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     text-decoration: none;
-    transition: color 0.3s ease;
+    width: fit-content;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
-#pie-de-pagina a:hover {
-    color: var(--color-acento);
+.btn-servicio:hover {
+    background-color: var(--dorado);
+    color: var(--negro);
+    border-color: var(--dorado);
 }
 
-.derechos {
+/* ==========================================
+   👥 SOBRE NOSOTROS
+   ========================================== */
+#nosotros {
+    background-color: var(--blanco-roto);
+    color: var(--negro);
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
     text-align: center;
+}
+
+.nosotros-contenido {
+    max-width: 600px;
+}
+
+/* Título de la sección */
+.nosotros-contenido h2 {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--negro);
+}
+
+/* Línea dorada decorativa bajo el título */
+.nosotros-contenido h2::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 2px;
+    background-color: var(--dorado);
+    margin: 14px auto 0;
+}
+
+.nosotros-contenido p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #444;
+    max-width: 520px;
+}
+
+/* Contenedor del iframe de Facebook — centrado y con ancho máximo */
+.fb-embed {
+    max-width: 500px;
     width: 100%;
-    margin-top: 20px;
-    border-top: 1px solid #444;
-    padding-top: 10px;
+    overflow: hidden;
 }
+
 /* ==========================================
-   📱 DISEÑO BASE: SÓLO PARA ZOOM EXTREMO (250%-300%+) O CELULARES MUY PEQUEÑOS
+   👣 FOOTER — Pie de página oscuro con grid de 3 columnas
    ========================================== */
-
-/* Menú de navegación apilado para cuando ya no hay espacio */
-#encabezado {
-    flex-direction: column; 
-    gap: 15px;
-    text-align: center;
-    padding: 20px 15px;
+#contacto {
+    background-color: #111;
+    color: var(--gris-texto);
+    padding: 60px 40px 30px;
 }
 
-.menu-principal ul {
-    flex-direction: column; 
-    gap: 12px;
-    align-items: center;
+/* Grid de 3 columnas en escritorio */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    max-width: 1000px;
+    margin: 0 auto 40px;
 }
 
-/* Servicios unidos en una sola columna con fondo unificado */
-.seccion-servicio {
+/* Títulos de cada columna del footer */
+.footer-col h3 {
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    color: var(--dorado);
+    margin-bottom: 16px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+}
+
+/* Párrafos y texto del footer */
+.footer-col p {
+    font-size: 0.88rem;
+    line-height: 1.9;
+}
+
+/* Links del footer */
+.footer-col a {
+    color: var(--gris-texto);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.footer-col a:hover {
+    color: var(--dorado);
+}
+
+/* Mapa de Google en el footer */
+.footer-mapa iframe {
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+/* Lista de redes sociales sin viñetas */
+.redes-lista {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    min-height: 60vh; 
-    background-size: cover;
-    background-position: center;
-    position: relative;
+    gap: 10px;
 }
 
-.servicio-info {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.9); /* El texto flota sobre la imagen de fondo */
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.redes-lista a {
+    font-size: 0.88rem;
+}
+
+/* Línea de copyright al fondo */
+.footer-copy {
+    border-top: 1px solid #2a2a2a;
+    padding-top: 24px;
     text-align: center;
+    font-size: 0.78rem;
+    color: #555;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.boton-servicio {
-    align-self: center; 
-}
-/*IMAGEES DE FONDO*/
-#peluqueria {
-    background-image: url('../img/baberia.webp');
-    background-size: cover;
-    background-position: right;
-}
 /* ==========================================
-   💻 DISEÑO PARA PANTALLAS NORMALES, LAPTOPS Y ZOOM MODERADO (Hasta 200%-249%)
+   📱 RESPONSIVE — Móvil (hasta 768px)
    ========================================== */
+@media (max-width: 768px) {
 
-@media (min-width: 576px) {
-    
-    /* Restaurar menú horizontal rápido desde pantallas pequeñas */
+    /* Header: logo y menú apilados */
     #encabezado {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 15px 30px;
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 20px;
+        text-align: center;
     }
 
     .menu-principal ul {
         flex-direction: row;
-        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
     }
 
-    /* Mantener el diseño de dos columnas (60% imagen, 40% texto) lo más posible */
-    .seccion-servicio {
-        flex-direction: row;
-        min-height: 80vh; /* Ajuste de altura para pantallas medianas con zoom */
+    /* Hero: título más pequeño en móvil */
+    .hero-contenido h1 {
+        font-size: clamp(2.8rem, 12vw, 4rem);
     }
 
-    /* Información a la izquierda */
-    .seccion-servicio.izquierda .servicio-info {
-        order: 1;
-        flex: 0 0 45%; /* Ajustamos a 45% para dar más espacio al texto durante el zoom */
-        background: rgb(255, 255, 255); 
-        align-items: flex-start;
+    /* Servicios: una sola columna en móvil */
+    #servicios {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cada tarjeta ocupa más alto en móvil */
+    .servicio-card {
+        min-height: 60vh;
+    }
+
+    /* Nosotros: menos padding en móvil */
+    #nosotros {
+        padding: 60px 24px;
+    }
+
+    /* Footer: una columna en móvil */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    #contacto {
+        padding: 48px 24px 24px;
+    }
+}
+
+
+/* ==========================================
+   🍔 MENÚ HAMBURGUESA (generado por JS)
+   ========================================== */
+
+/* El botón solo se muestra en móvil */
+.btn-hamburguesa {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+}
+
+/* Cada línea del ícono hamburguesa */
+.btn-hamburguesa span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--blanco-roto);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Animación: hamburguesa → X al abrir */
+.btn-hamburguesa.activo span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.btn-hamburguesa.activo span:nth-child(2) { opacity: 0; }
+.btn-hamburguesa.activo span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ==========================================
+   📌 HEADER COMPACTO AL HACER SCROLL
+   ========================================== */
+#encabezado.scrolled {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(13, 13, 13, 0.97);
+}
+
+/* ==========================================
+   🎯 ENLACE ACTIVO EN EL MENÚ
+   ========================================== */
+.menu-principal a.activo {
+    color: var(--dorado);
+}
+
+/* ==========================================
+   👁️ ANIMACIÓN DE ENTRADA DE TARJETAS
+   Estado inicial: invisible y desplazada hacia abajo
+   ========================================== */
+.servicio-card {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Estado final: visible y en su lugar */
+.servicio-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   🔝 BOTÓN VOLVER ARRIBA
+   ========================================== */
+.btn-arriba {
+    position: fixed;
+    bottom: 32px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    background-color: var(--dorado);
+    color: var(--negro);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;           /* No recibe clics cuando está invisible */
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 200;
+}
+
+/* Aparece cuando el JS le agrega la clase 'visible' */
+.btn-arriba.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.btn-arriba:hover {
+    background-color: var(--blanco-roto);
+}
+
+/* ==========================================
+   📱 RESPONSIVE MENÚ HAMBURGUESA (móvil)
+   ========================================== */
+@media (max-width: 768px) {
+
+    /* Muestra el botón hamburguesa en móvil */
+    .btn-hamburguesa {
+        display: flex;
+    }
+
+    /* Oculta el menú por defecto en móvil */
+    .menu-principal ul {
+        display: none;
+        position: absolute;
+        top: 100%;           /* Justo debajo del header */
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        background-color: rgba(13, 13, 13, 0.97);
+        padding: 20px 0;
+        border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    /* Clase que agrega el JS al abrir el menú */
+    .menu-principal ul.menu-abierto {
+        display: flex;
+    }
+
+    .menu-principal a {
+        padding: 12px 0;
+        font-size: 0.9rem;
+    }
+
+    /* El header necesita position relative para que el menú se posicione correctamente */
+    #encabezado {
+        position: fixed;
+        flex-direction: row;   /* Logo a la izquierda, botón a la derecha */
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0;
         text-align: left;
-    }
-
-    .seccion-servicio.izquierda::before {
-        content: "";
-        flex: 0 0 55%;
-        order: 2;
-        background-image: inherit;
-        background-size: cover;
-        background-position: center;
-    }
-
-    /* Información a la derecha */
-    .seccion-servicio.derecha .servicio-info {
-        order: 2;
-        flex: 0 0 45%;
-        background: rgb(255, 255, 255);
-        align-items: flex-start;
-        text-align: left;
-    }
-
-    .seccion-servicio.derecha::before {
-        content: "";
-        flex: 0 0 55%;
-        order: 1;
-        background-image: inherit;
-        background-size: cover;
-        background-position: center;
-    }
-    
-    /* Ocultar el fondo duplicado del contenedor cuando esté en modo dos columnas */
-    .seccion-servicio.izquierda,
-    .seccion-servicio.derecha {
-        background-image: none !important;
-    }
-
-    .boton-servicio {
-        align-self: flex-start;
     }
 }
