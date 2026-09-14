@@ -16,7 +16,7 @@
     <header id="encabezado">
         <div class="logo">
             <a href="https://unitycetpro.wuaze.com/">
-                <img src="/public/img/logo-blanco.webp" alt="Logo Unity">
+                <img src="/public/img/logo-dorado.webp" alt="Logo Unity">
             </a>
         </div>
         <nav class="menu-principal">
@@ -109,11 +109,11 @@
             <!-- Columna 1: datos de contacto -->
             <div class="footer-col">
                 <h3>Contacto</h3>
-                <p>jiron Cajamarquilla 905, Zarate, SJL</p>
-                <p>
+                <p><strong>Ubicanos:</strong> Cajamarquilla 905, Zarate, SJL</p>
+                <p><strong>Contactanos:</strong>
                     <a href="https://wa.me/51920134856/" target="_blank">920-134-856</a>
                 </p>
-                <p>
+                <p><strong>Email:</strong>
                     <a href="mailto:contacto.unityestilos@gmail.com" target="_blank">
                         contacto.unityestilos@gmail.com
                     </a>

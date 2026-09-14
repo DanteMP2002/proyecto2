@@ -84,7 +84,8 @@ body {
    🖼️ HERO — Sección de bienvenida a pantalla completa
    ========================================== */
 #inicio.hero {
-    min-height: 100vh;      /* Ocupa toda la pantalla */
+    margin-top: 95px;
+    min-height: 70vh;      /* Ocupa toda la pantalla */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,8 +94,8 @@ body {
     background-color: var(--negro);
     background-image:
         linear-gradient(rgba(10, 8, 6, 0.55), rgba(10, 8, 6, 0.55)),
-        url('/public/img/unity.webp'); /* Imagen de fondo del hero */
-    background-size: cover;
+        url('/public/img/logo-dorado-v.webp'); /* Imagen de fondo del hero */
+    background-size: 100% 100%;
     background-position: center;
     padding: 0 20px;
 }
