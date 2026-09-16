@@ -11,3 +11,5 @@ Thumbs.db
 
 # ignorar la base de datos
 config.php
+# ingnorar caperta 
+.continue
