@@ -13,3 +13,4 @@ Thumbs.db
 config.php
 # ingnorar caperta 
 .continue
+.php_tmp
