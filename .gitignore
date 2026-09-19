@@ -13,6 +13,7 @@ Thumbs.db
 config.php
 #ignorar pruebas
 prueba.php
+prueba.css
 # ingnorar caperta 
 .continue
 .php_tmp
