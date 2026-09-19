@@ -11,6 +11,8 @@ Thumbs.db
 
 # ignorar la base de datos
 config.php
+#ignorar pruebas
+prueba.php
 # ingnorar caperta 
 .continue
 .php_tmp
